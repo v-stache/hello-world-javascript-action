@@ -1,4 +1,4 @@
-name: 'Hello World'
+name: 'Hello World' # Required The name of your action. GitHub displays the name in the Actions tab to help visually identify actions in each job.
 description: 'Greet someone and record the time'
 inputs:
   who-to-greet:  # id of input
