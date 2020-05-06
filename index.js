@@ -8,6 +8,9 @@ try{
     core.setOutput("time", time)
     const payload=JSON.stringify(github.context.payload,undefined,2);
     console.log(`The event payload: ${payload}`);
+
+    console.log("Environment variables================================");
+    console.log(proces.env);
 }
 catch(error)
 {
