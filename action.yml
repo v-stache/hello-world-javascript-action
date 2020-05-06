@@ -12,6 +12,6 @@ outputs:
 runs:
   using: 'node12'
   main: 'index.js'
-  env: 
+  env:
     envTest1: 'test1'
     envTest2: 'test2'
