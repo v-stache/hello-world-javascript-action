@@ -11,7 +11,7 @@ outputs:
     description: 'The time we greeted you'
 runs:
   using: 'node12'
+  main: 'index.js'
   env: 
     envTest1: 'test1'
     envTest2: 'test2'
-  main: 'index.js'
