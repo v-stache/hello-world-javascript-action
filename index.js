@@ -10,7 +10,7 @@ try{
     console.log(`The event payload: ${payload}`);
 
     console.log("Environment variables================================");
-    console.log(proces.env);
+    console.log(process.env);
 }
 catch(error)
 {
