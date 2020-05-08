@@ -11,6 +11,8 @@ outputs:
     description: 'The time we greeted you'
 runs:
   using: 'node12'
+  pre: 'pre.js'
   main: 'index.js'
+  post: 'post.js'
   #env:
     #name: 'octocat'
