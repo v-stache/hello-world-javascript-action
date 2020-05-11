@@ -15,5 +15,6 @@ runs:
   # pre-if: 'runner.os == "linux"' 
   main: 'index.js'
   post: 'post.js'
+  post-if: 'runner.os == linux'
   #env:
     #name: 'octocat'
