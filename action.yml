@@ -11,7 +11,8 @@ outputs:
     description: 'The time we greeted you'
 runs:
   using: 'node12'
-  pre: 'pre.js'
+  pre: 'pre.js' # https://github.com/v-stache/hello-world-javascript-action/runs/655941181?check_suite_focus=true
+  pre-if: 'runner.os == linux'
   main: 'index.js'
   post: 'post.js'
   #env:
