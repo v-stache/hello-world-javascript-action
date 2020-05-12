@@ -19,6 +19,7 @@
   "homepage": "https://github.com/v-stache/hello-world-javascript-action#readme",
   "devDependencies": {
     "@actions/core": "^1.2.4",
+    "@actions/exec": "^1.0.4",
     "@actions/github": "^2.1.1"
   }
 }
