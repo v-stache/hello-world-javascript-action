@@ -9,7 +9,7 @@ try{
     const payload=JSON.stringify(github.context.payload,undefined,2);
     console.log(`The event payload: ${payload}`);
 
-    
+    // https://github.com/v-stache/hello-world-javascript-action/runs/667007467?check_suite_focus=true
     console.log("================export variable================")
     core.exportVariable('envVar', 'Val');
     console.log("================mask ================")

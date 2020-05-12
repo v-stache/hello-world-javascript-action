@@ -21,3 +21,5 @@ jobs:
           who-to-greet: "xingyu"
       - name: get output
         run: echo "The time was ${{steps.hello.outputs.time}}"
+      - name: get export variable
+        run: echo "The export variable $envVar"
