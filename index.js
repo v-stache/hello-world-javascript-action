@@ -52,6 +52,9 @@ try{
 
     console.log("====================@actions/tool-cache=======================");
     downloadTool();
+
+    console.log("====================@actions/github=======================");
+    githubRequest();
 }
 catch(error)
 {
@@ -83,4 +86,22 @@ async function downloadTool(){
         const node12Path = await tc.downloadTool('https://nodejs.org/dist/v12.7.0/node-v12.7.0-linux-x64.tar.gz');
         const node12ExtractedFolder = await tc.extractTar(node12Path, 'tool');
       }
+}
+async function githubRequest() {
+    // This should be a token with access to your repository scoped in as a secret.
+    // The YML workflow will need to set myToken with the GitHub Secret Token
+    // myToken: ${{ secrets.GITHUB_TOKEN }}
+    // https://help.github.com/en/actions/automating-your-workflow-with-github-actions/authenticating-with-the-github_token#about-the-github_token-secret
+    const myToken = core.getInput('myToken');
+    console.log(`token is ${myToken}`);
+    console.log(github);
+    const octokit = new github.GitHub(myToken);
+   
+    const { data: pullRequest } = await octokit.pulls.get({
+        owner: github.owner,
+        repo: github.repo,
+        pull_number: 1
+    });
+
+    console.log(pullRequest);
 }
