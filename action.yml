@@ -8,8 +8,7 @@ inputs: # Optional Input parameters allow you to specify data that the action ex
     default: 'World'
   myToken:
     description: 'token'
-    required: false
-    default: ${{ secrets.GITHUB_TOKEN }}
+    required: true
 outputs:
   time: # id of output
     description: 'The time we greeted you'
