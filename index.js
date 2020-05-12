@@ -2,6 +2,8 @@ const core=require('@actions/core');
 const github=require('@actions/github');
 const exec = require('@actions/exec');
 
+const glob = require('@actions/glob');
+
 try{
     const nameToGreet=core.getInput('who-to-greet');
     console.log(`Hello ${nameToGreet}`);
@@ -37,7 +39,12 @@ try{
     core.saveState("pidToKill", 12345);
     console.log("======================actions/exec=====================");
     asyncCall();
-    
+
+    console.log("======================actions/glob=====================");
+    const patterns = ['**/*.js', '**/*.json'];
+    const globber = await glob.create(patterns.join('\n'));
+    const files = await globber.glob();
+    console.log(files);
 }
 catch(error)
 {
