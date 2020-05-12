@@ -39,12 +39,18 @@ try{
     }catch(err){
         core.error(`Error ${err}`);
     }
+
     console.log("======================action state=====================");
     core.saveState("pidToKill", 12345);
-    console.log("======================actions/exec=====================");
+
+    //workflow commands: https://help.github.com/en/actions/reference/workflow-commands-for-github-actions#setting-an-output-parameter
+
+    //toolkit: https://github.com/actions/toolkit
+
+    console.log("======================@actions/exec=====================");
     asyncExec();
 
-    console.log("======================actions/glob=====================");
+    console.log("======================@actions/glob=====================");
     asyncGlob();
 
     console.log("====================@actions/io=======================");
@@ -60,6 +66,9 @@ catch(error)
 {
     core.setFailed(error.message);
 }
+
+
+
 async function asyncExec() {
     
     await exec.exec('node', ['test.js', 'foo=bar']);
@@ -92,6 +101,9 @@ async function githubRequest() {
     // The YML workflow will need to set myToken with the GitHub Secret Token
     // myToken: ${{ secrets.GITHUB_TOKEN }}
     // https://help.github.com/en/actions/automating-your-workflow-with-github-actions/authenticating-with-the-github_token#about-the-github_token-secret
+   
+   
+   // https://github.com/v-stache/hello-world-javascript-action/runs/667329222?check_suite_focus=true
     const myToken = core.getInput('myToken');
     console.log(`token is ${myToken}`);
     console.log(github.context);
@@ -99,11 +111,11 @@ async function githubRequest() {
    
     const context = github.context;
 
-    const newIssue = await octokit.issues.create({
-      ...context.repo,
-      title: 'New issue!',
-      body: 'Hello Universe!'
-    });
+    // const newIssue = await octokit.issues.create({
+    //   ...context.repo,
+    //   title: 'New issue!',
+    //   body: 'Hello Universe!'
+    // });
 
     const { data: pullRequest } = await octokit.pulls.get({
         owner: 'v-stache',
