@@ -38,19 +38,22 @@ try{
     console.log("======================action state=====================");
     core.saveState("pidToKill", 12345);
     console.log("======================actions/exec=====================");
-    asyncCall();
+    asyncExec();
 
     console.log("======================actions/glob=====================");
-    const patterns = ['**/*.js', '**/*.json'];
-    const globber = await glob.create(patterns.join('\n'));
-    const files = await globber.glob();
-    console.log(files);
+    asyncGlob();
 }
 catch(error)
 {
     core.setFailed(error.message);
 }
-async function asyncCall() {
+async function asyncExec() {
     
     await exec.exec('node', ['test.js', 'foo=bar']);
+}
+async function asyncGlob(){
+    const patterns = ['**/*.js', '**/*.json'];
+    const globber = await glob.create(patterns.join('\n'));
+    const files = await globber.glob();
+    console.log(files);
 }
