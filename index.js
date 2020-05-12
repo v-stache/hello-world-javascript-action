@@ -52,8 +52,9 @@ async function asyncExec() {
     await exec.exec('node', ['test.js', 'foo=bar']);
 }
 async function asyncGlob(){
+
     const patterns = ['**/*.js', '**/*.json'];
-    const globber = await glob.create(patterns.join('\n'));
-    const files = await globber.glob();
+    const globber2 = await glob.create(patterns.join('\n'));
+    const files = await globber2.glob();
     console.log(files);
 }
