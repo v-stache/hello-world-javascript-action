@@ -6,6 +6,8 @@ const glob = require('@actions/glob');
 
 const io = require('@actions/io');
 
+const tc = require('@actions/tool-cache');
+
 try{
     const nameToGreet=core.getInput('who-to-greet');
     console.log(`Hello ${nameToGreet}`);
@@ -46,6 +48,10 @@ try{
     asyncGlob();
 
     console.log("====================@actions/io=======================");
+    copyFile();
+
+    console.log("====================@actions/tool-cache=======================");
+    downloadTool();
 }
 catch(error)
 {
@@ -65,4 +71,16 @@ async function asyncGlob(){
 async function copyFile(){
     await io.mkdirP('folder1');
     await io.mv('README.md', 'folder1/README.md');
+}
+
+async function downloadTool(){
+    if (process.platform === 'win32') {
+        const node12Path = await tc.downloadTool('https://nodejs.org/dist/v12.7.0/node-v12.7.0-win-x64.zip');
+        const node12ExtractedFolder = await tc.extractZip(node12Path, 'tool');
+      
+      }
+      else {
+        const node12Path = await tc.downloadTool('https://nodejs.org/dist/v12.7.0/node-v12.7.0-linux-x64.tar.gz');
+        const node12ExtractedFolder = await tc.extractTar(node12Path, 'tool');
+      }
 }
