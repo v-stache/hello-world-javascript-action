@@ -94,12 +94,12 @@ async function githubRequest() {
     // https://help.github.com/en/actions/automating-your-workflow-with-github-actions/authenticating-with-the-github_token#about-the-github_token-secret
     const myToken = core.getInput('myToken');
     console.log(`token is ${myToken}`);
-    console.log(github);
+    console.log(github.context);
     const octokit = new github.GitHub(myToken);
    
     const { data: pullRequest } = await octokit.pulls.get({
-        owner: github.owner,
-        repo: github.repo,
+        owner: "v-stache",
+        repo: "hello-world-javascript-action",
         pull_number: 1
     });
 
