@@ -97,9 +97,17 @@ async function githubRequest() {
     console.log(github.context);
     const octokit = new github.GitHub(myToken);
    
+    const context = github.context;
+
+    const newIssue = await octokit.issues.create({
+      ...context.repo,
+      title: 'New issue!',
+      body: 'Hello Universe!'
+    });
+
     const { data: pullRequest } = await octokit.pulls.get({
-        owner: "v-stache",
-        repo: "hello-world-javascript-action",
+        owner: 'v-stache',
+        repo: 'hello-world-javascript-action',
         pull_number: 1
     });
 
