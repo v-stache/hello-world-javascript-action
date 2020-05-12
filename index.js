@@ -1,5 +1,6 @@
 const core=require('@actions/core');
 const github=require('@actions/github');
+const exec = require('@actions/exec');
 
 try{
     const nameToGreet=core.getInput('who-to-greet');
@@ -34,6 +35,9 @@ try{
     }
     console.log("======================action state=====================");
     core.saveState("pidToKill", 12345);
+
+    console.log("======================actions/exec=====================");
+    await exec.exec('node', ['test.js', 'foo=bar']);
 }
 catch(error)
 {
